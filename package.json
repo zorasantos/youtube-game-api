@@ -13,6 +13,7 @@
       "yarn lint --fix"
     ]
   },
+  "workerThreads": false,
   "scripts": {
     "dev": "tsnd --exit-child --respawn --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint src/**/*.ts --max-warnings=0",
