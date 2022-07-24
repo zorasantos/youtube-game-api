@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { registerGameFactory } from '../useCases/RegisterGameFactory';
+import { registerGameFactory } from '../../../../modules/games/useCases/registerGame/RegisterGameFactory';
 
 const registerRoutes = Router();
 

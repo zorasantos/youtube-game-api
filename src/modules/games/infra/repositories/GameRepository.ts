@@ -1,4 +1,4 @@
-import prismaClient from '../../prisma/prismaClient';
+import prismaClient from '../../../../shared/infra/prisma/prismaClient';
 import { IGameDTO } from '../entities/Game';
 import { IGameRepository } from './IGameRepository';
 

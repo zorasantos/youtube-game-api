@@ -15,13 +15,17 @@
   },
   "workerThreads": false,
   "scripts": {
-    "dev": "tsnd --exit-child --respawn --transpile-only --ignore-watch node_modules src/server.ts",
+    "dev": "tsnd --exit-child --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "lint": "eslint src/**/*.ts --max-warnings=0",
+    "prisma:studio": "prisma studio --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema=./src/shared/infra/prisma/schema.prisma",
     "build": "tsc",
     "prepare": "husky install"
   },
   "dependencies": {
     "@prisma/client": "^4.0.0",
+    "celebrate": "^15.0.1",
     "express": "^4.18.1",
     "uuid": "^8.3.2"
   },
