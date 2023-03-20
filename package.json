@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "18"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -15,8 +18,11 @@
   },
   "workerThreads": false,
   "scripts": {
+    "postinstall": "yarn prisma:generate",
     "dev": "tsnd --exit-child --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "start": "node ./dist/shared/infra/http/server.js",
     "lint": "eslint src/**/*.ts --max-warnings=0",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "prisma:studio": "prisma studio --schema=./src/shared/infra/prisma/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema=./src/shared/infra/prisma/schema.prisma",
     "prisma:generate": "prisma generate --schema=./src/shared/infra/prisma/schema.prisma",
@@ -32,12 +38,18 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-proposal-decorators": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^29.2.3",
     "@types/node": "^18.0.1",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
